@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вайб-кодинг на практике — начать и применять</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+        .section-gradient { background: linear-gradient(135deg, #ffffff 0%, #f9f7ff 100%); }
+        .card-gradient { background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%); }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#7C5CFC',
+                        primary: '#0F172A',
+                        secondary: '#64748B',
+                        light: '#F8FAFC',
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-primary font-sans">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 lg:py-32 overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-8 inline-flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full">
+                <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                <span class="text-sm font-semibold text-accent">Интенсив за 2 дня</span>
+            </div>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black font-display leading-tight mb-8 animate-fadeInUp">
+                Вайб-кодинг<br class="hidden sm:block"> на практике
+            </h1>
+
+            <p class="text-lg sm:text-xl lg:text-2xl text-secondary mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+                AI-инструменты изменили разработку. Если не знаешь с чего начать и как применить в своей работе — мы разберёмся вместе.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#6A4AE8] text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    <span>Записаться</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+                <a href="#about" class="inline-flex items-center justify-center bg-light hover:bg-gray-100 text-primary font-semibold text-lg px-8 py-4 rounded-xl border-2 border-gray-200 transition-all duration-300">
+                    Узнать больше
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Знакомо Section -->
+    <section class="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-light" id="about">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display text-primary mb-4">
+                    Знакомо?
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto">
+                    Если узнал себя в хотя бы одном пункте — ты в нужном месте
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="card-gradient p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-105 hover:border-accent/30">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed">
+                        Кажется, что все вокруг уже разобрались и ушли вперёд — а у тебя FOMO, пока сложно и непонятно
+                    </p>
+                </div>
+
+                <div class="card-gradient p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-105 hover:border-accent/30">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed">
+                        Коллеги обсуждают ChatGPT, Cursor, Copilot, Claude, агенты — а ты не понимаешь чем они отличаются
+                    </p>
+                </div>
+
+                <div class="card-gradient p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-105 hover:border-accent/30">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed">
+                        Хочешь попробовать, но не знаешь с какого инструмента начать
+                    </p>
+                </div>
+
+                <div class="card-gradient p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-105 hover:border-accent/30">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed">
+                        Не понятно за что и как платить из России, что можно бесплатно и как сэкономить
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-base sm:text-lg leading-relaxed">
+                        Не ясно как это применить к своей работе и в своих проектах
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Что мы сделаем Section -->
+    <section class="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 section-gradient">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display text-primary mb-4">
+                    Что мы дадим
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto">
+                    За 2 дня ты получишь реальные знания и опыт, который применишь сразу же
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-primary">
+                        Полный обзор AI-инструментов
+                    </h3>
+                    <p class="text-secondary text-base leading-relaxed">
+                        ChatGPT, Claude, Cursor, Copilot, агенты — чем они отличаются и для чего нужны
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-primary">
+                        Реальные примеры применения
+                    </h3>
+                    <p class="text-secondary text-base leading-relaxed">
+                        Как мы используем AI в Яндексе, Т-Банке и своих проектах — живые примеры и кейсы
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-primary">
+                        Применение именно для твоих задач
+                    </h3>
+                    <p class="text-secondary text-base leading-relaxed">
+                        Разберёмся где и как применить инструменты в твоей работе и проектах
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-primary">
+                        Экономия на подписках
+                    </h3>
+                    <p class="text-secondary text-base leading-relaxed">
+                        Как платить из России, какие сервисы бесплатны и как не переплачивать
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форматы Section -->
+    <section class="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display text-primary mb-4">
+                    Выбери свой формат
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                <div class="bg-white p-10 lg:p-12 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-accent/50">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-success"></div>
+                        <span class="text-sm font-semibold text-success uppercase">Популярный</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 text-primary">
+                        Интенсив
+                    </h3>
+                    <div class="mb-8">
+                        <div class="text-5xl font-black text-accent">
+                            10 000 ₽
+                        </div>
+                        <p class="text-secondary text-lg mt-2">за 2 дня</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-success mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Полный обзор инструментов</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-success mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Реальные кейсы и примеры</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-success mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Материалы и шпаргалка</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-success mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Обновления материалов</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/vibecoding_vibe_bot" class="w-full bg-accent hover:bg-[#6A4AE8] text-white font-bold py-4 rounded-xl transition-all duration-300 text-center">
+                        Записаться
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 p-10 lg:p-12 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <h3 class="text-3xl font-bold mb-4 text-primary">
+                        Частная сессия
+                    </h3>
+                    <div class="mb-8">
+                        <div class="text-5xl font-black text-accent">
+                            от 7 000 ₽
+                        </div>
+                        <p class="text-secondary text-lg mt-2">/час</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Решение твоей конкретной задачи</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Индивидуальный подход</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Быстро и по делу</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base text-primary">Гибкое расписание</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/vibecoding_vibe_bot" class="w-full bg-white hover:bg-gray-50 text-accent font-bold py-4 rounded-xl transition-all duration-300 text-center border-2 border-gray-200">
+                        Узнать подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кто мы Section -->
+    <section class="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-light">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display text-primary mb-4">
+                    Кто проводит
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto">
+                    Не сухая теория, а реальный опыт из корпораций и своих проектов
+                </p>
+            </div>
+            <div class="bg-white p-10 lg:p-14 rounded-3xl border border-gray-200 shadow-xl text-center">
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 mb-10">
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-accent to-accent/40 rounded-full flex items-center justify-center mb-5">
+                            <svg class="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">
+                            Продакт-лид
+                        </h3>
+                        <p class="text-sm text-secondary max-w-xs">
+                            Яндекс, Т-Банк<br>Применяет AI в работе каждый день
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-accent to-accent/40 rounded-full flex items-center justify-center mb-5">
+                            <svg class="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">
+                            Технический лид
+                        </h3>
+                        <p class="text-sm text-secondary max-w-xs">
+                            Яндекс, собственные проекты<br>Экспериментирует с новыми инструментами
+                        </p>
+                    </div>
+                </div>
+                <p class="text-lg sm:text-xl text-primary leading-relaxed font-medium">
+                    Опыт из корпораций и своих стартапов. Знают боль и радость разработчиков. Делятся реальными стратегиями.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display text-primary mb-8">
+                Начнём разбираться?
+            </h2>
+            <p class="text-lg sm:text-xl text-secondary mb-12 max-w-2xl mx-auto">
+                Места ограничены. За 2 дня ты поймёшь, как использовать AI-инструменты в своей работе.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#6A4AE8] text-white font-bold text-lg px-10 py-5 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    <span>Записаться на интенсив</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+                <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-light hover:bg-gray-100 text-primary font-bold text-lg px-10 py-5 rounded-xl border-2 border-gray-200 transition-all duration-300">
+                    <span>Частная сессия</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Spacing -->
+    <div class="h-20 sm:h-32"></div>
+
+</body>
+</html>
