@@ -7,15 +7,67 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .font-hand { font-family: 'Caveat', cursive; }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .font-serif-display { font-family: 'DM Serif Display', serif; }
+
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+
         details summary::-webkit-details-marker { display: none; }
         details summary::marker { display: none; }
         details[open] summary .faq-icon { transform: rotate(45deg); }
-        .timeline-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #E8613C; background: white; }
+
+        .gradient-brown { background: linear-gradient(135deg, #2D2017, #3D2B1F, #4A352A); }
+        .gradient-brown-warm { background: linear-gradient(135deg, #3D2B1F, #5C3D2E, #E8613C); }
+
+        .circle-decoration {
+            position: relative;
+            display: inline-block;
+        }
+        .circle-decoration::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -12px;
+            right: -12px;
+            bottom: -8px;
+            border: 2.5px solid #E8613C;
+            border-radius: 50%;
+            transform: rotate(-2deg);
+            pointer-events: none;
+        }
+
+        .underline-decoration {
+            position: relative;
+            display: inline;
+        }
+        .underline-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #E8613C;
+            border-radius: 2px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .bg-cream { background-color: #FFFAF5; }
+        .bg-light { background-color: #FAFAF8; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-animation { animation: float 4s ease-in-out infinite; }
     </style>
     <script>
         tailwind.config = {
@@ -23,13 +75,11 @@
                 extend: {
                     colors: {
                         accent: '#E8613C',
-                        primary: '#1b1b1b',
-                        secondary: '#6B7280',
-                        warm: '#FFF8F0',
-                        'warm-dark': '#FEF3E2',
-                        'card-blue': '#EFF6FF',
-                        'card-green': '#ECFDF5',
-                        'card-yellow': '#FEF9E7',
+                        'accent-dark': '#D4552F',
+                        primary: '#2D2017',
+                        secondary: '#7A7067',
+                        cream: '#FFFAF5',
+                        light: '#FAFAF8',
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -38,115 +88,147 @@
             }
         }
     </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(XXXXXXXXX, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body class="bg-white text-primary font-sans">
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-100/50 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div class="flex items-center gap-3">
-                <span class="text-xl font-bold">Кворум</span>
-                <span class="font-hand text-accent text-lg">продукт за 2 дня</span>
+            <div class="flex items-center gap-2">
+                <span class="font-serif-display text-2xl">Кворум</span>
             </div>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-secondary">
                 <a href="#program" class="hover:text-primary transition-colors">Программа</a>
+                <a href="#cases" class="hover:text-primary transition-colors">Кейсы</a>
                 <a href="#speakers" class="hover:text-primary transition-colors">Ведущие</a>
                 <a href="#pricing" class="hover:text-primary transition-colors">Тарифы</a>
-                <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
             </nav>
-            <a href="https://t.me/vibecoding_vibe_bot" class="bg-accent hover:bg-[#D4552F] text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-200">
+            <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium text-sm px-5 py-2.5 rounded-full transition-all duration-200">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 Записаться
             </a>
         </div>
     </header>
 
+    <!-- Promo Banner -->
+    <div class="fixed top-16 w-full bg-primary text-white text-center py-2.5 z-40">
+        <p class="text-sm">
+            🎁 <strong>−15% до&nbsp;24 февраля</strong> — подари ему AI-навык вместо носков.
+            <a href="https://t.me/vibecoding_vibe_bot" class="underline ml-1 hover:text-accent transition-colors">Забрать скидку →</a>
+        </p>
+    </div>
+
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pb-24">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-flex items-center gap-2 bg-warm border border-orange-200 px-4 py-2 rounded-full mb-8">
-                        <span class="text-accent text-sm">✦</span>
-                        <span class="text-sm font-medium text-primary">Практикум от продактов Яндекса и Т-Банка</span>
-                    </div>
+    <section class="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 pt-32 pb-20 bg-cream">
+        <div class="max-w-5xl mx-auto w-full text-center">
+            <div class="inline-flex items-center gap-2 bg-white border border-gray-200 px-5 py-2.5 rounded-full mb-10 shadow-sm">
+                <span class="w-2 h-2 bg-accent rounded-full"></span>
+                <span class="text-sm font-medium text-secondary">Практикум от продактов Яндекса и Т-Банка</span>
+            </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-black leading-tight mb-6">
-                        Вайб-кодинг на практике.<br>
-                        <span class="relative">
-                            <span class="relative z-10">Начать и применять.</span>
-                            <span class="absolute bottom-1 left-0 w-full h-3 bg-yellow-200/60 -z-0"></span>
-                        </span>
-                    </h1>
+            <h1 class="font-serif-display text-5xl sm:text-6xl lg:text-7xl leading-[1.1] mb-8">
+                Вайб-кодинг на практике.<br>
+                <span class="relative inline-block">
+                    <span class="underline-decoration">Начать и применять</span>
+                </span>.
+            </h1>
 
-                    <p class="text-lg text-secondary mb-8 leading-relaxed max-w-xl">
-                        AI-инструменты изменили работу. Если не знаешь с чего начать и как применить — мы разберёмся вместе за 2 дня.
-                    </p>
+            <p class="text-lg sm:text-xl text-secondary mb-12 leading-relaxed max-w-2xl mx-auto">
+                AI-инструменты изменили работу. Если не&nbsp;знаешь с&nbsp;чего начать и&nbsp;как применить — мы&nbsp;разберёмся вместе за&nbsp;2&nbsp;дня.
+            </p>
 
-                    <p class="font-hand text-accent text-xl mb-8">
-                        ⟶ 2-дневный интенсив, реальные результаты на выходе
-                    </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                    Записаться на интенсив
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="#program" class="inline-flex items-center justify-center font-semibold text-lg px-10 py-4 rounded-full border-2 border-gray-200 hover:border-gray-300 bg-white transition-all duration-300">
+                    Посмотреть программу
+                </a>
+            </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#D4552F] text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
-                            <span>☆</span>
-                            <span>Записаться</span>
-                        </a>
-                        <a href="#program" class="inline-flex items-center justify-center font-semibold text-lg px-8 py-4 rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-200">
-                            Посмотреть программу
-                        </a>
-                    </div>
+            <div class="mt-10 inline-flex items-center gap-3 bg-white border border-gray-200 px-5 py-3 rounded-full shadow-sm">
+                <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-orange-100 border-2 border-white flex items-center justify-center text-xs">👤</div>
+                    <div class="w-8 h-8 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center text-xs">👤</div>
+                    <div class="w-8 h-8 rounded-full bg-teal-100 border-2 border-white flex items-center justify-center text-xs">👤</div>
                 </div>
+                <p class="text-sm text-secondary">Уже записались <strong class="text-primary">12 человек</strong></p>
+            </div>
 
-                <div class="hidden lg:flex justify-center">
-                    <div class="relative bg-warm-dark border-2 border-dashed border-orange-200 rounded-2xl p-10 text-center transform rotate-2">
-                        <div class="text-5xl mb-3">💡</div>
-                        <p class="font-hand text-2xl text-primary mb-2">Идея</p>
-                        <p class="font-hand text-3xl text-accent mb-2">↓</p>
-                        <div class="text-5xl mb-3">🚀</div>
-                        <p class="font-hand text-2xl text-primary">Навык</p>
-                        <p class="font-hand text-lg text-secondary mt-4 -rotate-3">Это ты через 2 дня →</p>
-                    </div>
+            <div class="mt-12 flex justify-center gap-8 sm:gap-16 text-center">
+                <div>
+                    <p class="font-serif-display text-3xl sm:text-4xl">2 дня</p>
+                    <p class="text-sm text-secondary mt-1">по 4 часа</p>
+                </div>
+                <div class="w-px bg-gray-200"></div>
+                <div>
+                    <p class="font-serif-display text-3xl sm:text-4xl">0 кода</p>
+                    <p class="text-sm text-secondary mt-1">всё через AI</p>
+                </div>
+                <div class="w-px bg-gray-200"></div>
+                <div>
+                    <p class="font-serif-display text-3xl sm:text-4xl">1 проект</p>
+                    <p class="text-sm text-secondary mt-1">на выходе</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Знакомо? Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50" id="about">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Знакомо?</h2>
-                <p class="font-hand text-xl text-secondary">Если узнаёшь себя — тебе точно сюда ↓</p>
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="about">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Узнаёшь себя?</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    <span class="circle-decoration">Знакомо</span>?
+                </h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-card-yellow p-7 rounded-2xl border border-yellow-200 card-hover">
-                    <div class="text-3xl mb-3">📈</div>
-                    <p class="text-base leading-relaxed">
-                        Кажется, что <span class="font-semibold">все вокруг уже разобрались с AI</span> и ушли вперёд — а ты пока не понимаешь с чего начать
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-2xl mb-5">📈</div>
+                    <h4 class="font-bold mb-2">Все уже впереди</h4>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        Кажется, что <strong>все вокруг уже разобрались с&nbsp;AI</strong> и&nbsp;ушли вперёд — а&nbsp;ты пока не&nbsp;понимаешь с&nbsp;чего начать
                     </p>
                 </div>
-                <div class="bg-card-green p-7 rounded-2xl border border-green-200 card-hover">
-                    <div class="text-3xl mb-3">💬</div>
-                    <p class="text-base leading-relaxed">
-                        Коллеги обсуждают <span class="font-semibold">ChatGPT, Cursor, Claude, агенты</span> — а ты не понимаешь чем они отличаются и что реально полезно
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-2xl mb-5">💬</div>
+                    <h4 class="font-bold mb-2">Слишком много непонятных терминов</h4>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        Коллеги обсуждают <strong>ChatGPT, Cursor, Claude, агенты</strong> — а&nbsp;ты не&nbsp;понимаешь чем они отличаются и&nbsp;что реально полезно
                     </p>
                 </div>
-                <div class="bg-card-blue p-7 rounded-2xl border border-blue-200 card-hover">
-                    <div class="text-3xl mb-3">❓</div>
-                    <p class="text-base leading-relaxed">
-                        <span class="font-semibold">Хочешь попробовать вайбкодить</span>, но непонятно с какого инструмента начать и стоит ли тратить на это время
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center text-2xl mb-5">❓</div>
+                    <h4 class="font-bold mb-2">Хочешь вайбкодить, но&nbsp;сложно начать</h4>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        <strong>Хочешь попробовать</strong>, но&nbsp;непонятно с&nbsp;какого инструмента начать и&nbsp;стоит&nbsp;ли тратить на&nbsp;это время
                     </p>
                 </div>
-                <div class="bg-warm p-7 rounded-2xl border border-orange-200 card-hover">
-                    <div class="text-3xl mb-3">💳</div>
-                    <p class="text-base leading-relaxed">
-                        AI-инструменты <span class="font-semibold">кажутся дорогими</span>, непонятно как платить из России и на чём можно сэкономить
-                    </p>
-                </div>
-                <div class="bg-card-green p-7 rounded-2xl border border-green-200 card-hover md:col-span-2 lg:col-span-1">
-                    <div class="text-3xl mb-3">💼</div>
-                    <p class="text-base leading-relaxed">
-                        <span class="font-semibold">Не понимаешь как AI применить в своей работе</span> и какие задачи реально можно ускорить
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-2xl mb-5">💼</div>
+                    <h4 class="font-bold mb-2">Непонятно как применить в&nbsp;работе</h4>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        <strong>Не&nbsp;понимаешь как AI применить в&nbsp;работе или своих проектах</strong> — хочется конкретики, а&nbsp;не&nbsp;общих слов
                     </p>
                 </div>
             </div>
@@ -154,40 +236,43 @@
     </section>
 
     <!-- Что ты заберёшь Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Что ты заберёшь за 2 дня</h2>
-                <p class="text-lg text-secondary">Не слайды и не теория — реальные инструменты для ускорения работы</p>
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-cream">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Результат</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    Что ты заберёшь за <span class="underline-decoration">2 дня</span>
+                </h2>
+                <p class="text-lg text-secondary mt-6">Не&nbsp;слайды и&nbsp;не&nbsp;теория — реальные инструменты для ускорения работы</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🔍</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-2xl mb-5">🔍</div>
                     <h3 class="text-lg font-bold mb-2">Карту AI-инструментов</h3>
-                    <p class="text-secondary text-sm leading-relaxed">ChatGPT, Claude, Cursor, агенты, n8n — разберёшь что для чего и когда какой использовать</p>
+                    <p class="text-secondary text-sm leading-relaxed">ChatGPT, Claude, Cursor, агенты — разберёшь что для чего и когда какой использовать</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🚀</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-2xl mb-5">🚀</div>
                     <h3 class="text-lg font-bold mb-2">Ускорение работы в разы</h3>
                     <p class="text-secondary text-sm leading-relaxed">Научишься делать за часы то, что раньше занимало дни — с помощью AI и вайбкодинга</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">⚡</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center text-2xl mb-5">⚡</div>
                     <h3 class="text-lg font-bold mb-2">Собранный проект без кода</h3>
                     <p class="text-secondary text-sm leading-relaxed">Лендинг, бот или прототип — соберёшь своими руками прямо на интенсиве</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🎯</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-2xl mb-5">🎯</div>
                     <h3 class="text-lg font-bold mb-2">Умение общаться с AI</h3>
                     <p class="text-secondary text-sm leading-relaxed">Научишься ставить задачи AI и получать полезный результат с первого раза</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🤖</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-2xl mb-5">🤖</div>
                     <h3 class="text-lg font-bold mb-2">Автоматизация рутины</h3>
-                    <p class="text-secondary text-sm leading-relaxed">Настроишь AI-агентов и сценарии в n8n для автоматизации без программирования</p>
+                    <p class="text-secondary text-sm leading-relaxed">Покажем как автоматизировать рутину с помощью AI-агентов — без программирования</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">💰</div>
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 card-hover shadow-sm">
+                    <div class="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center text-2xl mb-5">💰</div>
                     <h3 class="text-lg font-bold mb-2">Экономия на подписках</h3>
                     <p class="text-secondary text-sm leading-relaxed">Узнаешь как платить из России и не переплачивать за AI-инструменты</p>
                 </div>
@@ -196,161 +281,82 @@
     </section>
 
     <!-- Как проходит Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50" id="program">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="program">
         <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">⚡ Как проходит</h2>
-                <p class="text-lg text-secondary">2 дня по 4 часа — от нуля до уверенного использования AI</p>
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Программа</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    Как <span class="underline-decoration">проходит</span>
+                </h2>
+                <p class="text-lg text-secondary mt-6">2 дня по&nbsp;4 часа · начинаем в&nbsp;10:00 · от&nbsp;нуля до&nbsp;уверенного использования AI</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- День 1 -->
-                <div>
-                    <div class="inline-flex items-center gap-3 mb-8">
-                        <span class="bg-warm-dark text-primary font-bold px-5 py-2 rounded-lg border border-orange-200">День 1</span>
-                        <span class="font-hand text-lg text-secondary">разбираемся в инструментах</span>
+                <div class="gradient-brown rounded-3xl p-8 sm:p-10 text-white">
+                    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
+                        <span class="font-semibold text-sm">День 1</span>
+                        <span class="text-sm opacity-80">· разбираемся в&nbsp;инструментах</span>
                     </div>
 
-                    <div class="space-y-8">
+                    <div class="space-y-6">
                         <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                                <div class="w-px h-full bg-gray-200 mt-2"></div>
-                            </div>
-                            <div class="pb-2">
-                                <p class="text-sm text-secondary mb-1">10:00</p>
-                                <h4 class="font-bold mb-1">Обзор AI-инструментов</h4>
-                                <p class="text-sm text-secondary">ChatGPT, Claude, Cursor, Copilot, агенты — чем отличаются и для чего каждый</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                                <div class="w-px h-full bg-gray-200 mt-2"></div>
-                            </div>
-                            <div class="pb-2">
-                                <p class="text-sm text-secondary mb-1">11:30</p>
-                                <h4 class="font-bold mb-1">Оплата, экономия и практика</h4>
-                                <p class="text-sm text-secondary">Как платить из России, лайфхаки по подпискам. Решаем реальные задачи с помощью AI</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                            </div>
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
                             <div>
-                                <p class="text-sm text-secondary mb-1">13:00</p>
-                                <h4 class="font-bold mb-1">AI-агенты и автоматизация</h4>
-                                <p class="text-sm text-secondary">Что умеют агенты, как настроить под себя и автоматизировать рутину</p>
+                                <h4 class="font-bold text-lg mb-1">Обзор AI-инструментов</h4>
+                                <p class="text-sm opacity-80">ChatGPT, Claude, Cursor, Copilot, агенты — чем отличаются и&nbsp;для чего каждый</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Оплата, экономия и&nbsp;практика</h4>
+                                <p class="text-sm opacity-80">Как платить из&nbsp;России, лайфхаки по&nbsp;подпискам. Решаем реальные задачи с&nbsp;помощью AI</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">AI-агенты и&nbsp;автоматизация</h4>
+                                <p class="text-sm opacity-80">Что умеют агенты, как настроить под себя и&nbsp;автоматизировать рутину</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- День 2 -->
-                <div>
-                    <div class="inline-flex items-center gap-3 mb-8">
-                        <span class="bg-warm-dark text-primary font-bold px-5 py-2 rounded-lg border border-orange-200">День 2</span>
-                        <span class="font-hand text-lg text-secondary">применяем на практике</span>
+                <div class="gradient-brown-warm rounded-3xl p-8 sm:p-10 text-white">
+                    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
+                        <span class="font-semibold text-sm">День 2</span>
+                        <span class="text-sm opacity-80">· применяем на&nbsp;практике</span>
                     </div>
 
-                    <div class="space-y-8">
+                    <div class="space-y-6">
                         <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                                <div class="w-px h-full bg-gray-200 mt-2"></div>
-                            </div>
-                            <div class="pb-2">
-                                <p class="text-sm text-secondary mb-1">10:00</p>
-                                <h4 class="font-bold mb-1">Настраиваем окружение и собираем проект</h4>
-                                <p class="text-sm text-secondary">Устанавливаем Cursor, настраиваем под задачи. Собираем лендинг, бот или прототип через AI</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                                <div class="w-px h-full bg-gray-200 mt-2"></div>
-                            </div>
-                            <div class="pb-2">
-                                <p class="text-sm text-secondary mb-1">12:00</p>
-                                <h4 class="font-bold mb-1">Применение к твоим задачам</h4>
-                                <p class="text-sm text-secondary">Разбираем кейсы участников, ищем точки применения AI в работе</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="flex flex-col items-center">
-                                <div class="timeline-dot flex-shrink-0 mt-1.5"></div>
-                            </div>
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
                             <div>
-                                <p class="text-sm text-secondary mb-1">13:00</p>
-                                <h4 class="font-bold mb-1">Итоги и дорожная карта</h4>
-                                <p class="text-sm text-secondary">Персональный план развития с AI, где искать актуальную информацию</p>
+                                <h4 class="font-bold text-lg mb-1">Настраиваем окружение и&nbsp;собираем проект</h4>
+                                <p class="text-sm opacity-80">Устанавливаем Cursor, настраиваем под задачи. Собираем лендинг, бот или прототип через AI</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Сомнения? Разберём Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Частые сомнения</h2>
-                <p class="text-lg text-secondary">У каждого сомнения есть решение</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">💼</div>
-                    <p class="text-accent font-semibold mb-3">«Не знаю, как это применить в своей работе и нужно ли вообще»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">Разберём конкретно твои задачи и покажем, где AI уже сейчас экономит часы</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🏆</div>
-                    <p class="text-accent font-semibold mb-3">«Я не программист»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">Код не нужен — всё через AI-конструкторы</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">📝</div>
-                    <p class="text-accent font-semibold mb-3">«Не знаю с чего начать»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">Пошаговый план: от нуля до реального применения за 2 дня</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🧠</div>
-                    <p class="text-accent font-semibold mb-3">«AI галлюцинирует»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">Покажем, как проверять и фильтровать результат</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">🧰</div>
-                    <p class="text-accent font-semibold mb-3">«Слишком много инструментов»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">Минимальный стек: 3–4 сервиса, которые реально работают</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-gray-200 card-hover">
-                    <div class="text-3xl mb-4">⏰</div>
-                    <p class="text-accent font-semibold mb-3">«Нет времени разбираться»</p>
-                    <div class="flex items-start gap-2">
-                        <span class="text-accent mt-0.5">⟶</span>
-                        <p class="text-sm text-secondary">2 дня — и ты применяешь. Без многочасовых курсов</p>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Применение к&nbsp;твоим задачам</h4>
+                                <p class="text-sm opacity-80">Разбираем кейсы участников, ищем точки применения AI в&nbsp;работе</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Итоги и&nbsp;дорожная карта</h4>
+                                <p class="text-sm opacity-80">Персональный план развития с&nbsp;AI, где искать актуальную информацию</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -358,62 +364,66 @@
     </section>
 
     <!-- Кейсы Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-warm" id="cases">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="cases">
         <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Что мы сделали вайбкодингом</h2>
-                <p class="text-lg text-secondary">Реальные проекты, собранные без разработчиков</p>
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Портфолио</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    Собрали <span class="underline-decoration">с помощью AI</span>
+                </h2>
+                <p class="text-lg text-secondary mt-6">Реальные проекты — без разработчиков, дизайнеров и&nbsp;кода</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Зарплатный отчёт -->
-                <a href="https://getsalary.netlify.app/" target="_blank" class="bg-white p-6 rounded-2xl border border-gray-200 card-hover block group">
+                <a href="https://getsalary.netlify.app/" target="_blank" class="bg-white p-7 rounded-3xl border border-gray-100 shadow-sm card-hover block group">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">💰</span>
                         <h3 class="text-lg font-bold group-hover:text-accent transition-colors">Зарплатный отчёт</h3>
                     </div>
-                    <p class="text-secondary text-sm leading-relaxed mb-4">
+                    <p class="text-secondary text-sm leading-relaxed mb-5">
                         Загружаешь резюме — получаешь зарплатную вилку, перцентиль на рынке и рекомендации по росту дохода. За 60 секунд.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-card-blue text-blue-700 px-2.5 py-1 rounded-full">AI-анализ</span>
-                        <span class="text-xs bg-card-green text-green-700 px-2.5 py-1 rounded-full">Веб-сервис</span>
-                        <span class="text-xs bg-card-yellow text-yellow-700 px-2.5 py-1 rounded-full">Без кода</span>
+                        <span class="text-xs bg-orange-50 text-orange-700 px-3 py-1 rounded-full">AI-анализ</span>
+                        <span class="text-xs bg-teal-50 text-teal-700 px-3 py-1 rounded-full">Веб-сервис</span>
+                        <span class="text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-full">Без кода</span>
                     </div>
+                    <p class="text-accent text-sm font-medium mt-4 group-hover:underline">Попробовать →</p>
                 </a>
 
                 <!-- Бот по литературе -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 card-hover flex flex-col">
+                <div class="bg-white p-7 rounded-3xl border border-gray-100 shadow-sm card-hover flex flex-col">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">📚</span>
                         <h3 class="text-lg font-bold">Бот по литературе</h3>
                     </div>
-                    <p class="text-secondary text-sm leading-relaxed mb-4">
+                    <p class="text-secondary text-sm leading-relaxed mb-5">
                         Telegram-бот для ежедневного тестирования учеников. Под капотом Python — но ни одной строчки кода не написано руками. Всё через AI.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-card-blue text-blue-700 px-2.5 py-1 rounded-full">Telegram-бот</span>
-                        <span class="text-xs bg-card-green text-green-700 px-2.5 py-1 rounded-full">Python + AI</span>
-                        <span class="text-xs bg-card-yellow text-yellow-700 px-2.5 py-1 rounded-full">Вайбкодинг</span>
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Telegram-бот</span>
+                        <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">Python + AI</span>
+                        <span class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full">Вайбкодинг</span>
                     </div>
-                    <div class="flex gap-2 mt-auto overflow-hidden rounded-lg border border-gray-100">
+                    <div class="flex gap-2 mt-auto overflow-hidden rounded-2xl border border-gray-100">
                         <img src="photos/literary-bot-2.png" alt="Literary bot — приветствие и админ-панель" class="w-1/2 h-36 object-cover object-bottom">
                         <img src="photos/literary-bot-1.png" alt="Literary bot — тест по литературе" class="w-1/2 h-36 object-cover object-bottom">
                     </div>
                 </div>
 
                 <!-- Этот лендинг -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 card-hover">
+                <div class="bg-white p-7 rounded-3xl border border-gray-100 shadow-sm card-hover">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">😉</span>
                         <h3 class="text-lg font-bold">Этот лендинг</h3>
                     </div>
-                    <p class="text-secondary text-sm leading-relaxed mb-4">
+                    <p class="text-secondary text-sm leading-relaxed mb-5">
                         Сайт, который ты сейчас читаешь — тоже вайбкодинг. Собран за пару часов со всеми правками. Без верстальщика, дизайнера и кода.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-card-blue text-blue-700 px-2.5 py-1 rounded-full">Лендинг</span>
-                        <span class="text-xs bg-card-yellow text-yellow-700 px-2.5 py-1 rounded-full">~2 часа</span>
+                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Лендинг</span>
+                        <span class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full">~2 часа</span>
                     </div>
                 </div>
             </div>
@@ -421,138 +431,162 @@
     </section>
 
     <!-- Ведущие Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50" id="speakers">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-cream" id="speakers">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Ведущие</h2>
-                <p class="font-hand text-xl text-secondary">Практики, не теоретики ✦</p>
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Команда</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    <span class="circle-decoration">Ведущие</span>
+                </h2>
+                <p class="text-lg text-secondary mt-6">Практики, не теоретики</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Глеб -->
-                <div class="bg-card-blue p-8 sm:p-10 rounded-2xl border border-gray-200">
-                    <img src="photos/gleb.jpg" alt="Глеб Хардеев" class="w-24 h-24 rounded-full object-cover mb-6 border-2 border-blue-200">
-                    <h3 class="text-2xl font-bold mb-1">Глеб Хардеев</h3>
-                    <a href="https://t.me/skladproducta" target="_blank" class="text-sm text-blue-500 hover:text-blue-700 transition-colors mb-3 inline-block">@skladproducta</a>
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <img src="photos/gleb.jpg" alt="Глеб Хардеев" class="w-20 h-20 rounded-2xl object-cover mb-6">
+                    <h3 class="font-serif-display text-2xl mb-1">Глеб Хардеев</h3>
+                    <a href="https://t.me/skladproducta" target="_blank" class="text-sm text-accent hover:text-accent-dark transition-colors mb-4 inline-block">@skladproducta</a>
                     <p class="text-accent font-semibold text-sm mb-1">LLM в работе, операционные продукты</p>
-                    <p class="font-hand text-secondary text-base mb-4">Яндекс · логистика · стартапы</p>
-                    <p class="text-secondary text-sm leading-relaxed">
-                        Как использовать LLM для операционки, автоматизации и запуска MVP за дни, а не месяцы. Применяет AI в работе каждый день.
-                    </p>
+                    <p class="text-secondary text-sm mb-4"><span class="text-primary font-medium">Яндекс</span> · логистика · стартапы</p>
+                    <ul class="text-secondary text-sm leading-relaxed space-y-1.5">
+                        <li>· LLM для операционки, автоматизации и&nbsp;запуска MVP</li>
+                        <li>· Применяет AI в&nbsp;работе каждый день</li>
+                        <li>· Куратор <a href="https://yandex.ru/yaintern/schools/summer" target="_blank" class="text-accent hover:underline">Летней школы Яндекса</a></li>
+                        <li>· Автор канала <a href="https://t.me/skladproducta" target="_blank" class="text-accent hover:underline">Склад продуктов</a></li>
+                    </ul>
                 </div>
 
                 <!-- Ника -->
-                <div class="bg-red-50 p-8 sm:p-10 rounded-2xl border border-gray-200">
-                    <img src="photos/nika.jpg" alt="Ника Штефан" class="w-24 h-24 rounded-full object-cover mb-6 border-2 border-red-200" style="object-position: center 25%">
-                    <h3 class="text-2xl font-bold mb-1">Ника Штефан</h3>
-                    <a href="https://t.me/nikshtefan" target="_blank" class="text-sm text-blue-500 hover:text-blue-700 transition-colors mb-3 inline-block">@nikshtefan</a>
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-sm card-hover">
+                    <img src="photos/nika.jpg" alt="Ника Штефан" class="w-20 h-20 rounded-2xl object-cover mb-6" style="object-position: center 25%">
+                    <h3 class="font-serif-display text-2xl mb-1">Ника Штефан</h3>
+                    <a href="https://t.me/nikshtefan" target="_blank" class="text-sm text-accent hover:text-accent-dark transition-colors mb-4 inline-block">@nikshtefan</a>
                     <p class="text-accent font-semibold text-sm mb-1">Discovery и сегментация, вайбкодинг на максималках</p>
-                    <p class="font-hand text-secondary text-base mb-4">Т-Банк · Lead Product Manager</p>
-                    <p class="text-secondary text-sm leading-relaxed">
-                        Глубокий ресёрч, запуск продуктов с нуля, проверка гипотез через нейросети. Следит за трендами AI и применяет в работе — ускоряя её кратно. Преподаёт магистрам продакт-менеджмент в <a href="https://cu.ru/" target="_blank" class="text-accent hover:underline">Центральном Университете</a>.
-                    </p>
+                    <p class="text-secondary text-sm mb-4"><span class="text-primary font-medium">Т-Банк</span> · Lead Product Manager</p>
+                    <ul class="text-secondary text-sm leading-relaxed space-y-1.5">
+                        <li>· Запуск продуктов с&nbsp;нуля, проверка гипотез через AI</li>
+                        <li>· Ускоряет работу кратно с&nbsp;помощью нейросетей</li>
+                        <li>· Преподаёт в&nbsp;<a href="https://cu.ru/" target="_blank" class="text-accent hover:underline">Центральном Университете</a></li>
+                        <li>· Ведёт подкаст <a href="https://music.yandex.ru/album/37162362" target="_blank" class="text-accent hover:underline">«Путь, который нравится»</a></li>
+                        <li>· Автор канала <a href="https://t.me/nikshtefan" target="_blank" class="text-accent hover:underline">Продакт в&nbsp;поиске ответов</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Тарифы Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8" id="pricing">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="pricing">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Тарифы</h2>
-                <p class="text-lg text-secondary">Выбери формат, который подходит</p>
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">Тарифы</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    Выбери <span class="underline-decoration">формат</span>
+                </h2>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Интенсив -->
-                <div class="bg-white p-8 sm:p-10 rounded-2xl border-2 border-gray-200 card-hover">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-accent">★</span>
-                        <span class="font-hand text-accent text-lg">Рекомендуем</span>
+                <div class="relative bg-primary text-white p-8 sm:p-10 rounded-3xl card-hover overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-accent/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="relative">
+                        <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full mb-6">
+                            <span class="text-accent text-sm">★</span>
+                            <span class="text-sm">Групповой формат</span>
+                        </div>
+                        <h3 class="font-serif-display text-3xl mb-2">Интенсив</h3>
+                        <p class="text-white/60 mb-6">2 дня по&nbsp;4 часа — полный цикл от&nbsp;нуля до&nbsp;практики</p>
+
+                        <div class="mb-4">
+                            <span class="text-lg text-white/40 line-through">11 990 ₽</span>
+                            <span class="font-serif-display text-5xl ml-2">10 190 ₽</span>
+                        </div>
+                        <p class="text-white/50 text-sm mb-8">Ника и&nbsp;Глеб лично ведут каждый интенсив</p>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-white/80">Живая работа с&nbsp;Никой и&nbsp;Глебом — не&nbsp;записи</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-white/80">Обзор инструментов + реальные кейсы</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-white/80">Применение AI и вайбкодинга в своей работе</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-white/80">Доступ к Telegram-сообществу</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-white/80">Обновления материалов</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://t.me/vibecoding_vibe_bot" class="block w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-full transition-all duration-300 text-center">
+                            Записаться
+                        </a>
                     </div>
-                    <h3 class="text-3xl font-bold mb-2">Интенсив</h3>
-                    <p class="text-secondary mb-6">2 дня — полный цикл от нуля до практики</p>
-
-                    <div class="text-5xl font-black text-primary mb-8">11 990 ₽</div>
-
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">2 дня практики с продактами Яндекса и Т-Банка</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Обзор инструментов + реальные кейсы</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Применение AI и вайбкодинга в своей работе</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Доступ к Telegram-сообществу</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Обновления материалов</span>
-                        </li>
-                    </ul>
-
-                    <a href="https://t.me/vibecoding_vibe_bot" class="block w-full bg-accent hover:bg-[#D4552F] text-white font-bold py-4 rounded-xl transition-all duration-200 text-center">
-                        Записаться
-                    </a>
                 </div>
 
                 <!-- Частная сессия -->
-                <div class="bg-white p-8 sm:p-10 rounded-2xl border-2 border-gray-200 card-hover">
-                    <h3 class="text-3xl font-bold mb-2">Частная сессия</h3>
-                    <p class="text-secondary mb-6">1-на-1, под твою задачу и продукт</p>
+                <div class="bg-white p-8 sm:p-10 rounded-3xl border-2 border-accent/30 shadow-sm card-hover">
+                    <div class="inline-flex items-center gap-2 bg-accent/10 px-4 py-1.5 rounded-full mb-6">
+                        <span class="text-accent text-sm">◆</span>
+                        <span class="text-sm text-accent font-medium">Персональный формат</span>
+                    </div>
+                    <h3 class="font-serif-display text-3xl mb-2">Частная сессия</h3>
+                    <p class="text-secondary mb-6">Ника или Глеб лично работают с&nbsp;вами 1-на-1</p>
 
-                    <div class="mb-8">
-                        <span class="text-5xl font-black text-primary">от 7 490 ₽</span>
+                    <div class="mb-4">
+                        <span class="font-serif-display text-5xl text-primary">от 7 490 ₽</span>
                         <span class="text-xl text-secondary">/час</span>
                     </div>
+                    <p class="text-accent text-sm font-medium mb-8">Первая встреча — бесплатно, разберём ваш запрос</p>
 
-                    <ul class="space-y-4 mb-8">
+                    <p class="text-sm font-semibold mb-3">Два направления работы:</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="bg-cream rounded-2xl p-4">
+                            <p class="text-sm font-semibold mb-1">Решаем задачу вместе</p>
+                            <p class="text-xs text-secondary leading-relaxed">Внедрение AI в&nbsp;ваши процессы, продуктовая проработка бизнес-задач, сборка прототипа — делаем руками, а&nbsp;не&nbsp;рассказываем</p>
+                        </div>
+                        <div class="bg-cream rounded-2xl p-4">
+                            <p class="text-sm font-semibold mb-1">Обучаем команду</p>
+                            <p class="text-xs text-secondary leading-relaxed">Поможем сотрудникам освоить AI-инструменты и&nbsp;ускорить работу — с&nbsp;привязкой к&nbsp;реальным задачам компании</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-sm">Персональная работа с ментором</span>
+                            <span class="text-sm"><strong>Индивидуальный план</strong> под ваши задачи</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-sm">Разбор твоего продукта / идеи</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Индивидуальный план AI-инструментов</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm">Артефакты и промпты под задачу</span>
+                            <span class="text-sm">Готовые артефакты и&nbsp;промпты на&nbsp;выходе</span>
                         </li>
                     </ul>
 
-                    <a href="https://t.me/vibecoding_vibe_bot" class="block w-full bg-white hover:bg-gray-50 text-primary font-bold py-4 rounded-xl transition-all duration-200 text-center border-2 border-gray-200">
-                        Оставить заявку
+                    <a href="https://t.me/vibecoding_vibe_bot" class="block w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 rounded-full transition-all duration-300 text-center">
+                        Записаться на бесплатную встречу
                     </a>
                 </div>
             </div>
@@ -560,25 +594,47 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50" id="faq">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-cream" id="faq">
         <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-black mb-4">Частые вопросы</h2>
-                <p class="font-hand text-xl text-secondary">Спрашивайте — отвечаем ✎</p>
+            <div class="text-center mb-12">
+                <p class="section-label text-accent mb-4">FAQ</p>
+                <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
+                    Частые <span class="underline-decoration">вопросы</span>
+                </h2>
             </div>
 
             <div class="space-y-4">
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
-                        Нужно ли уметь программировать?
+                        Я&nbsp;не&nbsp;программист — мне подойдёт?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
                     </summary>
                     <div class="px-6 pb-6 text-secondary text-sm leading-relaxed">
-                        Нет. Интенсив рассчитан на людей без технического бэкграунда. Мы используем no-code AI-конструкторы и промпты — код писать не нужно. Всё покажем пошагово.
+                        Да. Код не&nbsp;нужен — всё через AI-конструкторы и&nbsp;промпты. В&nbsp;этом и&nbsp;суть вайбкодинга. Интенсив рассчитан на&nbsp;людей без технического бэкграунда.
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
+                    <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
+                        Не&nbsp;знаю, как применить AI в&nbsp;своей работе
+                        <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-secondary text-sm leading-relaxed">
+                        Разберём конкретно твои задачи и&nbsp;покажем, где AI уже сейчас экономит часы. Минимальный стек: 3–4 сервиса, которые реально работают.
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
+                    <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
+                        А&nbsp;если AI галлюцинирует?
+                        <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-secondary text-sm leading-relaxed">
+                        Покажем, как проверять и&nbsp;фильтровать результат — чтобы доверять тому, что выдаёт AI.
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         Что я получу на выходе?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
@@ -588,7 +644,7 @@
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         Сколько времени нужно выделить?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
@@ -598,7 +654,7 @@
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         А если я уже использую ChatGPT?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
@@ -608,17 +664,17 @@
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         Есть ли гарантия результата?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
                     </summary>
                     <div class="px-6 pb-6 text-secondary text-sm leading-relaxed">
-                        Материалы, промпты и доступ к сообществу остаются у тебя навсегда. Результат зависит от вовлечённости, но за 2 дня ты точно уйдёшь с пониманием и практическими навыками.
+                        За 2 дня ты точно уйдёшь с&nbsp;пониманием и&nbsp;практическими навыками. Материалы, промпты и&nbsp;доступ к&nbsp;сообществу остаются у&nbsp;тебя навсегда.
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         Можно ли прийти с командой?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
@@ -628,7 +684,7 @@
                     </div>
                 </details>
 
-                <details class="bg-white rounded-xl border border-gray-200 group">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
                     <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold">
                         Какие инструменты будем использовать?
                         <span class="faq-icon text-2xl text-secondary transition-transform duration-200">+</span>
@@ -642,22 +698,20 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
-            <div class="bg-warm-dark border-2 border-dashed border-orange-200 rounded-3xl p-10 sm:p-14 text-center">
-                <div class="text-4xl mb-4">☆</div>
-                <h2 class="text-3xl sm:text-4xl font-black mb-4">Начнём разбираться?</h2>
-                <p class="text-secondary mb-8 max-w-lg mx-auto">
+            <div class="gradient-brown rounded-3xl p-10 sm:p-16 text-center text-white">
+                <h2 class="font-serif-display text-3xl sm:text-5xl mb-4">Начнём разбираться?</h2>
+                <p class="text-white/80 mb-10 max-w-lg mx-auto text-lg">
                     Места ограничены. За 2 дня ты поймёшь, как использовать AI-инструменты в своей работе.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#D4552F] text-white font-bold text-lg px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
+                    <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                         Записаться на интенсив
-                        <span>⟶</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>
-                    <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 font-bold text-lg px-10 py-4 rounded-xl border-2 border-gray-300 hover:border-gray-400 transition-all duration-200">
+                    <a href="https://t.me/vibecoding_vibe_bot" class="inline-flex items-center justify-center gap-2 font-bold text-lg px-10 py-4 rounded-full border-2 border-white/40 hover:border-white/70 transition-all duration-300">
                         Частная сессия
-                        <span>⟶</span>
                     </a>
                 </div>
             </div>
@@ -665,29 +719,32 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+    <footer class="border-t border-gray-100 py-16 px-4 sm:px-6 lg:px-8 bg-light">
         <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8">
             <div>
-                <p class="font-bold text-lg mb-2">Кворум</p>
-                <p class="text-sm text-secondary">Интенсив от продактов Яндекса и Т-Банка. Вайб-кодинг на практике за 2 дня.</p>
+                <p class="font-serif-display text-xl mb-3">Кворум</p>
+                <p class="text-sm text-secondary leading-relaxed">Интенсив от продактов Яндекса и Т-Банка. Вайб-кодинг на практике за 2 дня.</p>
             </div>
             <div>
-                <p class="font-bold mb-2">Навигация</p>
-                <div class="space-y-1 text-sm text-secondary">
-                    <a href="#program" class="block hover:text-primary">Программа</a>
-                    <a href="#speakers" class="block hover:text-primary">Ведущие</a>
-                    <a href="#pricing" class="block hover:text-primary">Тарифы</a>
-                    <a href="#faq" class="block hover:text-primary">FAQ</a>
+                <p class="font-semibold mb-3 text-sm">Навигация</p>
+                <div class="space-y-2 text-sm text-secondary">
+                    <a href="#program" class="block hover:text-primary transition-colors">Программа</a>
+                    <a href="#cases" class="block hover:text-primary transition-colors">Кейсы</a>
+                    <a href="#speakers" class="block hover:text-primary transition-colors">Ведущие</a>
+                    <a href="#pricing" class="block hover:text-primary transition-colors">Тарифы</a>
+                    <a href="#faq" class="block hover:text-primary transition-colors">FAQ</a>
                 </div>
             </div>
             <div>
-                <p class="font-bold mb-2">Контакты</p>
-                <div class="space-y-1 text-sm text-secondary">
-                    <a href="https://t.me/vibecoding_vibe_bot" class="block hover:text-primary">Telegram-бот</a>
+                <p class="font-semibold mb-3 text-sm">Контакты</p>
+                <div class="space-y-2 text-sm text-secondary">
+                    <a href="https://t.me/vibecoding_vibe_bot" class="block hover:text-primary transition-colors">Telegram-бот</a>
+                    <a href="https://t.me/nikshtefan" class="block hover:text-primary transition-colors">@nikshtefan</a>
+                    <a href="https://t.me/skladproducta" class="block hover:text-primary transition-colors">@skladproducta</a>
                 </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-100 text-center text-sm text-secondary">
+        <div class="max-w-6xl mx-auto mt-10 pt-8 border-t border-gray-200 text-center text-sm text-secondary">
             &copy; 2026 Кворум. Все права защищены.
         </div>
     </footer>
