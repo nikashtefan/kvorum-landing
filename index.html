@@ -201,58 +201,110 @@
     <!-- Для кого Section -->
     <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" id="about">
         <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-12">
+            <div class="text-center mb-10">
                 <p class="section-label text-accent mb-4">Для кого</p>
                 <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
-                    <span class="circle-decoration">Узнаёшь</span> себя?
+                    Что ты <span class="underline-decoration">сможешь</span> после интенсива
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Продакт -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-2xl mb-5">📈</div>
-                    <h4 class="font-bold text-lg mb-3">Продакт-менеджер</h4>
-                    <p class="text-sm text-secondary leading-relaxed mb-4">
-                        Отчёты, дашборды, подготовка к&nbsp;ревью — рутина съедает время на&nbsp;стратегию. <strong>AI ускоряет это в&nbsp;разы.</strong>
-                    </p>
-                    <ul class="space-y-1.5 text-sm text-secondary">
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Дашборд с&nbsp;метриками — за&nbsp;минуты</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Прототип для проверки гипотезы — за&nbsp;день</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Аналитика и&nbsp;отчёты — без&nbsp;ручной работы</li>
-                    </ul>
-                </div>
-
-                <!-- Предприниматель -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center text-2xl mb-5">🚀</div>
-                    <h4 class="font-bold text-lg mb-3">Предприниматель</h4>
-                    <p class="text-sm text-secondary leading-relaxed mb-4">
-                        Проверка идей, лендинги, презентации — всё занимает слишком долго. <strong>С&nbsp;AI — в&nbsp;разы быстрее.</strong>
-                    </p>
-                    <ul class="space-y-1.5 text-sm text-secondary">
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> MVP или лендинг — за&nbsp;выходные</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Бот для клиентов — за&nbsp;вечер</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Проверка идеи до&nbsp;вложения бюджета</li>
-                    </ul>
-                </div>
-
-                <!-- Маркетолог -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-2xl mb-5">📣</div>
-                    <h4 class="font-bold text-lg mb-3">Маркетолог</h4>
-                    <p class="text-sm text-secondary leading-relaxed mb-4">
-                        Отчёты, лендинги, рассылки — рутина отнимает время на&nbsp;стратегию. <strong>AI берёт рутину на&nbsp;себя.</strong>
-                    </p>
-                    <ul class="space-y-1.5 text-sm text-secondary">
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Лендинг под&nbsp;акцию — за&nbsp;час</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Бот для лидгена — за&nbsp;вечер</li>
-                        <li class="flex gap-2"><span class="text-accent font-bold">·</span> Дашборд аналитики — без&nbsp;запросов к&nbsp;аналитику</li>
-                    </ul>
+            <!-- Табы -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-gray-100 rounded-full p-1 gap-1">
+                    <button onclick="showTab('pm')" id="tab-pm" class="segment-tab px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-primary text-white">
+                        Продакт-менеджер
+                    </button>
+                    <button onclick="showTab('founder')" id="tab-founder" class="segment-tab px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 text-secondary hover:text-primary">
+                        Предприниматель
+                    </button>
+                    <button onclick="showTab('marketer')" id="tab-marketer" class="segment-tab px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 text-secondary hover:text-primary">
+                        Маркетолог
+                    </button>
                 </div>
             </div>
+
+            <!-- PM -->
+            <div id="content-pm" class="segment-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Проверить гипотезу за день вместо спринта</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Без разработчика собрал прототип, показал пользователям, получил фидбек</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Демо вместо рассказа</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Пришёл на встречу со стейкхолдерами с работающим демо, а не презентацией</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Собрать тулзу для оптимизации работы за вечер</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Дашборд, отчет и бот для фидбека. Можно не откладывать на Q5, а сразу накидать самому</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Анализировать данные без аналитика</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Загрузил отзывы и метрики и получил приоритизацию за минуты</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Предприниматели -->
+            <div id="content-founder" class="segment-content hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Запустить MVP без разработчика</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Проверил сам идею рабочим продуктом</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">От идеи до первых денег за дни</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Pieter Levels собрал игру за 3 часа и она приносит $100K+ в месяц. А 25% стартапов YC написаны на 95% с помощью AI</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Автоматизировать рутину в бизнесе</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Бот для заказов, CRM под себя и отчёты за вечер</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Заменить дорогой SaaS своим решением</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Вместо подписки за $500 в месяц собрал свой инструмент за $20. Точно под свои задачи и ничего лишнего</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Маркетологи -->
+            <div id="content-marketer" class="segment-content hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Лендинги без очереди к разработчику</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Маркетолог уже может собрать 12 лендингов за 2 дня и не ждать разработку несколько недель</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Калькуляторы и квизы для лидгена за несколько часов</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Интерактивный контент конвертирует вдвое лучше статичного. И теперь его можно собрать самому за день</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Дашборд метрик вместо ручных отчётов</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Раньше 3 часа в день уходило на сбор данных из рекламных кабинетов, а теперь 15 минут</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 border-l-4 border-l-accent">
+                        <h4 class="font-bold text-base mb-2">Виджеты на сайт без разработки</h4>
+                        <p class="text-sm text-secondary leading-relaxed">Интерактивный блок и шторку до/после можно сделать за пару часов</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+    <script>
+    function showTab(tab) {
+        document.querySelectorAll('.segment-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.segment-tab').forEach(el => {
+            el.classList.remove('bg-primary', 'text-white');
+            el.classList.add('text-secondary');
+        });
+        document.getElementById('content-' + tab).classList.remove('hidden');
+        const activeTab = document.getElementById('tab-' + tab);
+        activeTab.classList.add('bg-primary', 'text-white');
+        activeTab.classList.remove('text-secondary');
+    }
+    </script>
 
     <!-- Что ты заберёшь Section -->
     <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-cream">
