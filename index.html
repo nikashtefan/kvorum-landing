@@ -14,6 +14,13 @@
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
 
+        /* Lightbox */
+        .lightbox-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; }
+        .lightbox-overlay.active { display:flex; }
+        .lightbox-overlay img { max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 8px 40px rgba(0,0,0,.4); }
+        .case-img { cursor:zoom-in; transition:opacity .2s; }
+        .case-img:hover { opacity:.85; }
+
         details summary::-webkit-details-marker { display: none; }
         details summary::marker { display: none; }
         details[open] summary .faq-icon { transform: rotate(45deg); }
@@ -215,7 +222,7 @@
                         Ты описываешь задачу словами — AI делает всё остальное.
                     </p>
                     <p class="text-white/70 leading-relaxed">
-                        Лендинг, бот, дашборд, прототип — раньше на&nbsp;это нужен был разработчик и&nbsp;месяцы. Теперь — вечер и&nbsp;AI. Код писать не&nbsp;нужно, технический бэкграунд не&nbsp;нужен.
+                        Раньше на&nbsp;лендинг, бот, дашборд или прототип нужен был разработчик и&nbsp;месяцы. Теперь можно собрать за&nbsp;вечер с&nbsp;помощью AI. Код писать не&nbsp;нужно, технический бэкграунд не&nbsp;нужен.
                     </p>
                 </div>
             </div>
@@ -371,7 +378,7 @@
 
                 <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 flex flex-col">
                     <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-2xl mb-6">🔍</div>
-                    <h3 class="font-bold text-base mb-4">Будешь знать какой AI инструмент подойдет под твою задачу</h3>
+                    <h3 class="font-bold text-base mb-4">Будешь знать какой AI инструмент подойдёт под твою задачу</h3>
                     <ul class="space-y-3 text-sm text-secondary leading-relaxed">
                         <li class="flex gap-2"><span class="text-accent font-bold">·</span> Claude, Cursor, Bolt, Copilot, агенты — разберём чем отличаются и когда какой применять</li>
                         <li class="flex gap-2"><span class="text-accent font-bold">·</span> Промптинг: как не заморачиваться и получать максимально результат</li>
@@ -453,7 +460,7 @@
                             <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
                             <div>
                                 <h4 class="font-bold text-lg mb-1">Оплата, экономия и&nbsp;практика</h4>
-                                <p class="text-sm opacity-80">Как платить из&nbsp;России, лайфхаки по&nbsp;подпискам. Решаем реальные задачи с&nbsp;помощью AI</p>
+                                <p class="text-sm opacity-80">Как платить из&nbsp;России, лайфхаки по&nbsp;подпискам. Сокращаем расходы на&nbsp;AI инструменты</p>
                             </div>
                         </div>
 
@@ -487,7 +494,7 @@
                             <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
                             <div>
                                 <h4 class="font-bold text-lg mb-1">Применение к&nbsp;твоим задачам</h4>
-                                <p class="text-sm opacity-80">Кейсы участников: продакт, предприниматель, маркетолог — точки применения AI в&nbsp;твоей работе</p>
+                                <p class="text-sm opacity-80">Кейсы для продактов, предпринимателей и&nbsp;маркетологов. Покажем точки применения на&nbsp;кейсах</p>
                             </div>
                         </div>
 
@@ -498,6 +505,11 @@
                                 <p class="text-sm opacity-80">Персональный план развития с&nbsp;AI, где искать актуальную информацию</p>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-white/20 flex items-center gap-3">
+                        <span class="text-lg">🎥</span>
+                        <p class="text-sm opacity-80">Все занятия записываются — доступ к&nbsp;записям после интенсива</p>
                     </div>
                 </div>
             </div>
@@ -524,7 +536,7 @@
                         <span class="text-[10px] uppercase tracking-wider bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-semibold">MVP</span>
                     </div>
                     <p class="text-secondary text-sm leading-relaxed mb-5">
-                        Загружаешь резюме — получаешь зарплатную вилку, перцентиль на&nbsp;рынке и&nbsp;рекомендации по&nbsp;росту дохода. Работающий прототип — собран с&nbsp;помощью AI без единой строчки кода.
+                        Загружаешь резюме — получаешь зарплатную вилку, перцентиль на&nbsp;рынке и&nbsp;рекомендации по&nbsp;росту дохода. Работающий прототип: собран с&nbsp;помощью AI без единой строчки кода.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-orange-50 text-orange-700 px-3 py-1 rounded-full">AI-анализ</span>
@@ -534,14 +546,14 @@
                     <p class="text-accent text-sm font-medium mt-4 group-hover:underline">Попробовать →</p>
                 </a>
 
-                <!-- Бот по литературе -->
+                <!-- Система для препода и ученика -->
                 <div class="bg-white p-7 rounded-3xl border border-gray-100 shadow-sm card-hover flex flex-col">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">📚</span>
-                        <h3 class="text-lg font-bold">Бот по литературе</h3>
+                        <h3 class="text-lg font-bold">Система для препода и&nbsp;ученика</h3>
                     </div>
                     <p class="text-secondary text-sm leading-relaxed mb-5">
-                        Telegram-бот для ежедневного тестирования учеников. Под капотом Python — но ни одной строчки кода не написано руками. Всё через AI.
+                        Админка для преподавателя + Telegram-бот для учеников. Препод создаёт курсы и&nbsp;вопросы, ученики проходят тесты каждый день. Всё собрано через AI.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-5">
                         <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Telegram-бот</span>
@@ -549,8 +561,8 @@
                         <span class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full">Вайбкодинг</span>
                     </div>
                     <div class="flex gap-2 mt-auto overflow-hidden rounded-2xl border border-gray-100">
-                        <img src="photos/literary-bot-2.png" alt="Literary bot — приветствие и админ-панель" class="w-1/2 h-36 object-cover object-bottom">
-                        <img src="photos/literary-bot-1.png" alt="Literary bot — тест по литературе" class="w-1/2 h-36 object-cover object-bottom">
+                        <img src="photos/litbot-admin.png" alt="Админка преподавателя" class="w-1/2 h-36 object-cover object-top case-img" onclick="openLightbox(this)">
+                        <img src="photos/literary-bot-1.png" alt="Тест ученика в Telegram" class="w-1/2 h-36 object-cover object-bottom case-img" onclick="openLightbox(this)">
                     </div>
                 </div>
 
@@ -561,7 +573,7 @@
                         <h3 class="text-lg font-bold">Этот лендинг</h3>
                     </div>
                     <p class="text-secondary text-sm leading-relaxed mb-5">
-                        Сайт, который ты сейчас читаешь — тоже вайбкодинг. Полностью собран с&nbsp;помощью AI — от&nbsp;дизайна до&nbsp;деплоя. Без&nbsp;верстальщика, дизайнера и&nbsp;кода.
+                        Сайт, который ты сейчас читаешь — тоже вайбкодинг. Полностью собран с&nbsp;помощью AI: от&nbsp;дизайна до&nbsp;деплоя.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Лендинг</span>
@@ -577,7 +589,7 @@
                         <span class="text-[10px] uppercase tracking-wider bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Live</span>
                     </div>
                     <p class="text-secondary text-sm leading-relaxed mb-5">
-                        Инструмент контроля сделок для B2B-агентов недвижимости. Собрали прямо во&nbsp;время собеседования — за&nbsp;30&nbsp;минут.
+                        Инструмент контроля сделок для B2B&#8209;агентов недвижимости. Собрали прямо во&nbsp;время собеседования за&nbsp;час.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">B2B-инструмент</span>
@@ -595,7 +607,7 @@
                         <span class="text-[10px] uppercase tracking-wider bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Демо</span>
                     </div>
                     <p class="text-secondary text-sm leading-relaxed mb-5">
-                        Бот для автоматических ответов клиентам. Загружаешь FAQ своего бизнеса — получаешь работающего помощника. Без&nbsp;серверов и&nbsp;бэкенда.
+                        Бот для автоматических ответов клиентам. Загружаешь FAQ своего бизнеса и&nbsp;получаешь работающего помощника. Без&nbsp;серверов и&nbsp;бэкенда.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-orange-50 text-orange-700 px-3 py-1 rounded-full">Чат-интерфейс</span>
@@ -633,7 +645,7 @@
                 <h2 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl mb-4">
                     <span class="circle-decoration">Ведущие</span>
                 </h2>
-                <p class="text-lg text-secondary mt-6">Практики, не теоретики</p>
+                <p class="text-lg text-secondary mt-6">Практики, а&nbsp;не&nbsp;теоретики</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -757,13 +769,13 @@
                         <span class="font-serif-display text-5xl text-primary">от 7 490 ₽</span>
                         <span class="text-xl text-secondary">/час</span>
                     </div>
-                    <p class="text-accent text-sm font-medium mb-8">Первая встреча — бесплатно, разберём ваш запрос</p>
+                    <p class="text-accent text-sm font-medium mb-8">Первая встреча — бесплатно, разберём твой запрос</p>
 
                     <p class="text-sm font-semibold mb-3">Два направления работы:</p>
                     <div class="space-y-3 mb-6">
                         <div class="bg-cream rounded-2xl p-4">
                             <p class="text-sm font-semibold mb-1">Решаем задачу вместе</p>
-                            <p class="text-xs text-secondary leading-relaxed">Внедрение AI в&nbsp;ваши процессы, продуктовая проработка бизнес-задач, сборка прототипа — делаем руками, а&nbsp;не&nbsp;рассказываем</p>
+                            <p class="text-xs text-secondary leading-relaxed">Внедрение AI в&nbsp;твои процессы, продуктовая проработка бизнес-задач, сборка прототипа — делаем руками, а&nbsp;не&nbsp;рассказываем</p>
                         </div>
                         <div class="bg-cream rounded-2xl p-4">
                             <p class="text-sm font-semibold mb-1">Обучаем команду</p>
@@ -776,7 +788,7 @@
                             <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-sm"><strong>Индивидуальный план</strong> под ваши задачи</span>
+                            <span class="text-sm"><strong>Индивидуальный план</strong> под твои задачи</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -979,6 +991,25 @@
             &copy; 2026 Кворум. Все права защищены.
         </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="" id="lightbox-img">
+    </div>
+    <script>
+        function openLightbox(el) {
+            const lb = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = el.src;
+            document.getElementById('lightbox-img').alt = el.alt;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
 
 </body>
 </html>
